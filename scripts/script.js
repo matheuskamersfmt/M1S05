@@ -1,3 +1,4 @@
+let carrinho = []
 let produtos = [
     { codigo: '111', produto: 'Arroz', preco: 6.50 },
     { codigo: '222', produto: 'Feijão', preco: 5.00 },
@@ -7,6 +8,7 @@ let produtos = [
     { codigo: '666', produto: 'Tomate', preco: 7.00 },
     { codigo: '777', produto: 'Refrigerante', preco: 10.00 },
 ]
+
 
 document.getElementById('searchButton').addEventListener('click', function() {
     var searchInput = document.getElementById('searchInput').value;
@@ -18,14 +20,29 @@ document.getElementById('searchButton').addEventListener('click', function() {
       document.getElementById('result').innerHTML = 'Produto não encontrado.';
       document.getElementById('buyButton').disabled = true;
     }
-  });
+});
 
-  function buscarPrecoProduto(input) {
+function buscarPrecoProduto(input) {
     for (let i = 0; i < produtos.length; i++) {
         if ((produtos[i].codigo === input) || (produtos[i].produto.toLocaleLowerCase() === input.toLocaleLowerCase())) {
-            return {produto: produtos[i].produto, preco: produtos[i].preco}
+            return produtos[i]
         }
     }
 
     return null
+}
+
+  document.getElementById('buyButton').addEventListener('click', function() {
+    var searchInput = document.getElementById('searchInput').value;
+    comprarProduto(searchInput);
+  });
+
+  function comprarProduto(input) {
+    for (let i = 0; i < produtos.length; i++) {
+        if ((produtos[i].codigo === input) || (produtos[i].produto.toLocaleLowerCase() === input.toLowerCase())) {
+            carrinho.push(produtos[i])
+            alert('Produto adicionado ao carrinho!')
+            console.log(carrinho)
+        }
+    }
   }
