@@ -44,19 +44,16 @@ function buscarPrecoProduto(input) {
         if ((produtos[i].codigo === input) || (produtos[i].produto.toLocaleLowerCase() === input.toLowerCase())) {
             carrinho.push(produtos[i])
             alert('Produto adicionado ao carrinho!')
+            updateCartTotal()
         }
     }
   }
 
 
-  function cart() {
-    if (carrinho.length == 0) {
-      alert('Carrinho vazio!')
-      return
-    }
+  function updateCartTotal() {
       let total = 0
       carrinho.forEach((item) => {
         total += item.preco
       })
-      alert(`O total da compra é R$ ${total.toFixed(2)}`)
+      document.getElementById('cartTotal').innerHTML = `Total: R$ ${total.toFixed(2)}`
   }
