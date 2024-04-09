@@ -44,29 +44,19 @@ function buscarPrecoProduto(input) {
         if ((produtos[i].codigo === input) || (produtos[i].produto.toLocaleLowerCase() === input.toLowerCase())) {
             carrinho.push(produtos[i])
             alert('Produto adicionado ao carrinho!')
-            if (carrinho.length >= 1 && !cartButtonCreated) {
-              cartButtonCreated = true;
-              cart(); 
-          }
         }
     }
   }
 
-  let cartButtonCreated = false;
 
   function cart() {
-    const cart = document.createElement('div')
-    cart.className = 'cart'
-    const consulta = document.createElement('button')
-    consulta.innerHTML = 'Consultar total'
-    container.style.flexDirection = 'column'
-    container.appendChild(cart)
-    cart.appendChild(consulta)
-    consulta.addEventListener('click', function() {
+    if (carrinho.length == 0) {
+      alert('Carrinho vazio!')
+      return
+    }
       let total = 0
       carrinho.forEach((item) => {
         total += item.preco
       })
       alert(`O total da compra é R$ ${total.toFixed(2)}`)
-    })
   }
