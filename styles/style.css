@@ -58,4 +58,19 @@ body {
     font-size: 18px;
     text-align: center;
   }
+
+  .cart {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    margin-top: 12px;
+  }
+
+  @media (max-width: 560px) {
+    #buyButton {
+      margin-top: 8px;
+    }
+  }
   
