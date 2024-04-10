@@ -51,9 +51,11 @@ function buscarPrecoProduto(input) {
 
 
   function updateCartTotal() {
-      let total = 0
-      carrinho.forEach((item) => {
-        total += item.preco
-      })
-      document.getElementById('cartTotal').innerHTML = `Total: R$ ${total.toFixed(2)}`
+    let quantidade = carrinho.length
+    let total = 0
+    carrinho.forEach((item) => {
+      total += item.preco
+    })
+    document.getElementById('cartQnt').innerHTML = `Total de produtos: ${quantidade}`
+    document.getElementById('cartTotal').innerHTML = `Total: R$ ${total.toFixed(2)}`
   }

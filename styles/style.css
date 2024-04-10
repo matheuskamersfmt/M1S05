@@ -61,12 +61,18 @@ body {
   }
 
   .cart {
+    display: flex;
+    flex-direction: column;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
     text-align: center;
     margin-top: 12px;
+  }
+
+  #cartTotal {
+    margin-top: 8px;
   }
 
   @media (max-width: 560px) {
