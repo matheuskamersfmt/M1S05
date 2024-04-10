@@ -1,4 +1,4 @@
-let carrinho = []
+let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
 let produtos = [
     { codigo: '111', produto: 'Arroz', preco: 6.50 },
     { codigo: '222', produto: 'Feijão', preco: 5.00 },
@@ -10,6 +10,10 @@ let produtos = [
 ]
 
 const container = document.querySelector('.container')
+
+if (carrinho.length > 0) {
+  updateCartTotal();
+}
 
 
 document.getElementById('searchButton').addEventListener('click', function() {
@@ -44,6 +48,7 @@ function buscarPrecoProduto(input) {
         if ((produtos[i].codigo === input) || (produtos[i].produto.toLocaleLowerCase() === input.toLowerCase())) {
             carrinho.push(produtos[i])
             alert('Produto adicionado ao carrinho!')
+            localStorage.setItem('carrinho', JSON.stringify(carrinho));
             updateCartTotal()
         }
     }
